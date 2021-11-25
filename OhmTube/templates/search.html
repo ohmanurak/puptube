@@ -1,0 +1,11 @@
+{% for vid in results %}
+    <a href="{{ url_for('video', video_id=vid.id) }}">
+        <div class="video-item">
+                <img src="{{ url_for('static', filename='thumbnails/' + vid.thumbnail) }}" alt="{{ vid.title }}">
+            <div class="video-item-info">
+                    <h3>{{ vid.title }}</h3>
+                <p>{{ vid.description }}</p>
+            </div>
+        </div>
+    </a>
+{% endfor %}

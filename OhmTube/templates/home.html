@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{%  block content %}
+    <h1>Welcome to OhmTube {{ current_user.username }}! </h1>
+    {% if current_user.is_authenticated %}
+    <h1>Videos</h1>
+        <div class="home-video">
+            {% for vid in videos %}
+                <a href="{{ url_for("video",video_id=vid.id) }}">
+                    <div class="content-section">
+                        <img src="{{ url_for('static',filename="thumbnails/"+vid.thumbnail) }}" alt="">
+                        <div class="content-section-text video-text">
+                            <p>{{ vid.title }}</p>
+                            <p>Uploaded by {{ vid.uploader.username }}</p>
+                            <p>{{ vid.description }}</p>
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

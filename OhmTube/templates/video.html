@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <video width="1280" height="720" controls>
+        <source src={{ url_for('static', filename="videos/"+video.video) }} type="video/mp4">
+        Your browser does not support the video tag.
+        </video>
+            <h1>{{ video.title }}</h1>
+            <p>{{ video.description }}</p>
+            <a href="{{ url_for("profile",user_id=video.uploader.id) }}">Uploaded By {{ video.uploader.username }}</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>{{ user.username }}</h1>
+            {% for vid in videos %}
+                <a href="{{ url_for("video",video_id=vid.id) }}">
+                    <div class="content-section">
+                        <img src="{{ url_for('static',filename="thumbnails/"+vid.thumbnail) }}" alt="">
+                        <p>{{ vid.title }}</p>
+                        <p>{{ vid.description }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
